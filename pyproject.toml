@@ -10,7 +10,7 @@ packages = [
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 types-PyYAML = "^6.0"
 pytest = "^7.0"
 black = "^23.0"

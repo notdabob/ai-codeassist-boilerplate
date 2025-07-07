@@ -1,12 +1,15 @@
 # PowerShell Installer Script for AI Code Assist Boilerplate
 
-Write-Host "🚀 Starting installation..."
+Write-Host "🚀 Starting full installation..."
+
+# Import the Run-Python module for cross-platform Python execution
+Import-Module -Force "$(Join-Path $PSScriptRoot 'Run-Python.psm1')"
 
 # Check if Poetry is installed
 if (-not (Get-Command poetry -ErrorAction SilentlyContinue)) {
     Write-Host "📦 Installing Poetry..."
     Invoke-WebRequest -Uri https://install.python-poetry.org -OutFile install-poetry.py
-    python install-poetry.py
+    Run-Python "install-poetry.py"
     Remove-Item install-poetry.py
 }
 
@@ -47,10 +50,7 @@ function Install-SuperClaude {
     Write-Host "--- SuperClaude installation complete ---"
 }
 
-# Prompt user for SuperClaude installation
-$installSC = Read-Host "Would you like to install SuperClaude? (y/n)"
-if ($installSC -eq 'y' -or $installSC -eq 'Y') {
-    Install-SuperClaude
-}
+# --- Easy Button: Run all steps automatically ---
+Install-SuperClaude
 
-Write-Host "✅ Installation complete!"
+Write-Host "✅ All installation steps complete!"
