@@ -1,0 +1,6 @@
+elevenlabs:
+  api_key: YOUR_ELEVENLABS_API_KEY
+  default_voice: Rachel
+  features:
+    - text_to_speech
+    - custom_voices

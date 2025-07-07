@@ -1,0 +1,3 @@
+[submodule "external/SuperClaude"]
+	path = external/SuperClaude
+	url = https://github.com/NomenAK/SuperClaude.git

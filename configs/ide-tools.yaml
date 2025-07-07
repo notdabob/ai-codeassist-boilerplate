@@ -1,0 +1,7 @@
+ide_tools:
+  - name: Visual Studio Code
+    description: Popular code editor with extensive extensions and support for multiple languages.
+  - name: Visual Studio Code Insiders
+    description: Preview version of Visual Studio Code with early access to new features.
+  - name: Zed.dev
+    description: Collaborative code editor designed for remote teams.

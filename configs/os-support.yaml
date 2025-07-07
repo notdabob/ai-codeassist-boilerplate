@@ -1,0 +1,24 @@
+operating_systems:
+  - name: macOS
+    versions: ["11.0+", "12.0+"]
+    dependencies:
+      - Python: 3.7+
+      - PowerShell: 7.0+
+  - name: Windows
+    versions: ["10+", "11+"]
+    dependencies:
+      - Python: 3.7+
+      - PowerShell: 7.0+
+  - name: Linux
+    flavors:
+      - Proxmox VE
+      - Ubuntu 20.04 LTS
+      - Debian 11
+    dependencies:
+      - Python: 3.7+
+      - PowerShell: 7.0+
+  - name: Windows Server
+    versions: ["2019", "2022"]
+    dependencies:
+      - Python: 3.7+
+      - PowerShell: 7.0+

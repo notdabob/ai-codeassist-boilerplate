@@ -1,0 +1,10 @@
+code_stack:
+  programming_languages:
+    - Python: 3.7+
+    - PowerShell: 7.0+
+  libraries:
+    - claude-cli: 1.0.0
+    - requests: 2.28.1
+  tools:
+    - PowerShell: Used for scripting and automation.
+    - Jupyter Notebook: Interactive development and testing.

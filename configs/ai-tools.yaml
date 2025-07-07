@@ -1,0 +1,11 @@
+ai_tools:
+  - name: Claude CLI
+    version: 3.0
+    description: Command-line interface for Anthropic's Claude AI.
+    config_file: claude_config.yaml
+    models_file: claude_models.yaml
+  - name: Google Gemini CLI
+    version: 1.2
+    description: CLI for Google's Gemini AI.
+    config_file: gemini_config.yaml
+    models_file: gemini_models.yaml

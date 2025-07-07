@@ -1,0 +1,20 @@
+superclaude:
+  repository: https://github.com/NomenAK/SuperClaude
+  version: 2.0.1
+  install_dir: ~/.claude
+  features:
+    - 19 specialized commands
+    - 9 cognitive personas
+    - token optimization
+    - MCP integration
+  workflows:
+    - name: Full-Stack Feature Development
+      steps:
+        - /build --react --magic --watch --persona-frontend
+        - /test --coverage --e2e --strict --persona-qa
+        - /scan --validate --deps --persona-security
+    - name: Production Issue Resolution
+      steps:
+        - /troubleshoot --investigate --prod --persona-analyzer
+        - /analyze --profile --perf --seq
+        - /improve --performance --threshold 95% --persona-performance
