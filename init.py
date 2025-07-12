@@ -111,7 +111,7 @@ class ProjectInitializer:
                 pre_commit_content = (
                     "repos:\n"
                     "  - repo: https://github.com/psf/black\n"
-                    "    rev: 23.0.0\n"
+                    "    rev: v25.1.0\n"
                     "    hooks:\n"
                     "      - id: black\n"
                     "        language_version: python3\n"
