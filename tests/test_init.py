@@ -32,7 +32,8 @@ class TestProjectInitializer:
         monkeypatch.setattr("platform.system", lambda: "Windows")
         initializer = ProjectInitializer()
         pip_cmd = initializer.get_pip_command()
-        assert pip_cmd.endswith("Scripts\\pip")
+        # On Windows, the path should contain Scripts/pip (Path object uses forward slashes)
+        assert "Scripts" in pip_cmd and pip_cmd.endswith("pip")
 
     def test_project_directories_list(self):
         """Test that required directories are defined."""

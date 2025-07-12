@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(chmod:*)",
+      "Bash(python:*)",
+      "Bash(true)",
+      "mcp__ide__getDiagnostics",
+      "Bash(source:*)",
+      "Bash(pytest:*)",
+      "Bash(test:*)",
+      "Bash(test -d tests)",
+      "Bash(git init:*)",
+      "Bash(rg:*)",
+      "Bash(pip-audit:*)",
+      "Bash(pip install:*)",
+      "Bash(mkdir:*)"
+    ],
+    "deny": []
+  }
+}
