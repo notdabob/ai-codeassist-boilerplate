@@ -1,11 +1,33 @@
 ai_tools:
-  - name: Claude CLI
-    version: 3.0
-    description: Command-line interface for Anthropic's Claude AI.
-    config_file: claude_config.yaml
-    models_file: claude_models.yaml
-  - name: Google Gemini CLI
-    version: 1.2
-    description: CLI for Google's Gemini AI.
-    config_file: gemini_config.yaml
-    models_file: gemini_models.yaml
+  anthropic:
+    name: "Claude"
+    description: "Anthropic's Claude AI assistant for code analysis and generation"
+    api_endpoint: "https://api.anthropic.com"
+    config_file: "claude_config.yaml"
+    models:
+      - "claude-3-5-sonnet-20241022"
+      - "claude-3-sonnet-20240229"
+      - "claude-3-haiku-20240307"
+    environment_variables:
+      - "CLAUDE_API_KEY"
+  
+  google:
+    name: "Gemini"
+    description: "Google's Gemini AI model for development assistance"
+    api_endpoint: "https://generativelanguage.googleapis.com"
+    config_file: "gemini_config.yaml"
+    models:
+      - "gemini-pro"
+      - "gemini-pro-vision"
+    environment_variables:
+      - "GEMINI_API_KEY"
+  
+  github:
+    name: "GitHub Copilot"
+    description: "AI pair programming directly in IDE"
+    integration: "native"
+    config_file: "copilot-instructions.md"
+    features:
+      - "code_completion"
+      - "chat_assistance"
+      - "code_review"
