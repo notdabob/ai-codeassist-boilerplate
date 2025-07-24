@@ -53,39 +53,5 @@ function Get-ProviderModels {
         Write-Error ("Failed to fetch models for {0}: {1}" -f $Provider, $_)
     }
 }
+
 Export-ModuleMember -Function Get-ProviderModels
-
-function Install-ElevenLabsSDK {
-    [CmdletBinding()]
-    param()
-
-    Write-Host "Installing ElevenLabs Python SDK..."
-    pip install elevenlabs
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host "ElevenLabs Python SDK installed successfully."
-    } else {
-        Write-Error "Failed to install ElevenLabs Python SDK. Please check your Python environment."
-    }
-}
-
-Export-ModuleMember -Function Install-ElevenLabsSDK
-
-function Configure-ElevenLabs {
-    [CmdletBinding()]
-    param()
-
-    Write-Host "Configuring ElevenLabs..."
-    $apiKey = Read-Host "Enter your ElevenLabs API key"
-
-    $config = @{
-        elevenlabs = @{
-            api_key       = $apiKey
-            default_voice = "Rachel"
-        }
-    }
-
-    $config | ConvertTo-Yaml | Set-Content -Path "../configs/elevenlabs_config.yaml" -Encoding UTF8
-    Write-Host "ElevenLabs configuration saved to ../configs/elevenlabs_config.yaml."
-}
-
-Export-ModuleMember -Function Configure-ElevenLabs

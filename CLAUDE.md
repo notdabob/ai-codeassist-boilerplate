@@ -1,149 +1,135 @@
-# CLAUDE.md
+# Claude-Specific Development Guidelines
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides specific guidance for Claude Code (claude.ai/code) when working with this AI Code Assist Boilerplate repository.
 
-## Project Overview
+## Project Context for Claude
 
-This is an AI Code Assist Boilerplate project - a template for setting up development environments optimized for AI-assisted coding with tools like Claude and Gemini.
+This repository is an **AI Code Assist Boilerplate** - a template designed for setting up development environments optimized for AI-assisted coding. When working with this codebase, understand that:
 
-## Development Commands
+1. **Template Nature**: This is meant to be cloned and customized, not used as-is
+2. **AI-First Approach**: All patterns and structures are optimized for AI tool integration
+3. **Cross-Platform**: Support for Windows, macOS, and Linux is essential
+4. **Boilerplate Focus**: Prioritize flexibility and extensibility over specific functionality
 
-### Setup
-```bash
-# Quick install (recommended)
-sh scripts/install.sh     # macOS/Linux
-pwsh scripts/install.ps1  # Any platform with PowerShell
+## Claude-Specific Patterns
 
-# Manual setup
-python init.py
+### Code Generation Guidelines
 
-# Activate virtual environment
-source .venv/bin/activate  # Unix/macOS
-.\.venv\Scripts\activate   # Windows
-```
+When generating code for this project:
 
-### Testing
-```bash
-# Run all tests
-pytest
+1. **Follow Established Patterns**: Use existing code in `src/` and `tests/` as templates
+2. **Maintain Type Safety**: All functions must have complete type hints
+3. **Cross-Platform Compatibility**: Consider Windows, macOS, and Linux differences
+4. **AI Tool Integration**: Code should work well with other AI assistants
 
-# Run with coverage
-pytest --cov=src --cov-report=term-missing
+### Documentation Best Practices
 
-# Run specific test types
-pytest -m unit              # Unit tests only
-pytest -m "not slow"        # Skip slow tests
-pytest tests/test_file.py   # Single test file
-```
+When updating documentation:
+- **Keep template nature clear**: Remind users this is a boilerplate
+- **Focus on AI integration**: Highlight features that benefit AI-assisted development
+- **Maintain consistency**: Use established formatting and structure
+- **Cross-reference appropriately**: Link related configurations and files
 
-### Code Quality
-```bash
-# Format code
-black .
+### Configuration Management
 
-# Type checking
-mypy src/
-```
+When working with configs:
+- **Validate YAML syntax**: Ensure all YAML files are properly formatted
+- **Document environment variables**: Clearly specify required `.env` entries
+- **Maintain AI tool configs**: Keep `ai-tools.yaml` current with supported tools
+- **Preserve examples**: Include example values but never real secrets
 
-### PowerShell Module
-```powershell
-# Import the module
-Import-Module ./scripts/Run-Python.psm1
+## Development Workflow for Claude
 
-# Run Python scripts
-Run-Python "your_script.py"
+### Preferred Code Changes
 
-# Test the module
-pwsh -File ./tests/test_run_python.ps1
-```
+1. **Start with tests**: Write failing tests first when implementing features
+2. **Minimal, focused changes**: Make surgical modifications rather than large rewrites
+3. **Preserve functionality**: Maintain existing behavior unless explicitly changing it
+4. **Update documentation**: Keep docs in sync with code changes
 
-## Architecture
+### File Modification Priorities
 
-### Directory Structure
-- `src/` - Python source code packages
-- `tests/` - Test suite (pytest)
-- `scripts/` - Cross-platform installation and utility scripts
-- `configs/` - YAML configuration files for tools and AI services
-- `data/` - Data files (git-ignored)
-- `.claude/` - Claude-specific configuration
-- `SuperClaude/` - SuperClaude framework (if installed)
+When making changes, prioritize files in this order:
+1. Core functionality in `src/`
+2. Tests in `tests/`
+3. Configuration files in `configs/`
+4. Documentation files (README.md, etc.)
+5. Scripts in `scripts/`
 
-### Key Technologies
-- **Language**: Python (>=3.8.1, <4.0)
-- **Package Manager**: Poetry
-- **Testing**: Pytest with coverage
-- **Code Formatter**: Black
-- **Type Checker**: MyPy
-- **Cross-Platform Scripts**: PowerShell 7.0+
+### Quality Assurance Steps
 
-### Configuration Files
-- `pyproject.toml` - Poetry dependencies and project metadata
-- `pytest.ini` - Test configuration with coverage settings
-- `configs/ai-tools.yaml` - AI tool configurations
-- `configs/superclaude.yaml` - SuperClaude settings
+Before suggesting changes:
+1. **Verify type hints**: Ensure all new code has proper typing
+2. **Check cross-platform compatibility**: Consider path handling, commands, etc.
+3. **Validate configurations**: Ensure YAML files are syntactically correct
+4. **Test integration**: Consider how changes affect AI tool integration
 
-## Development Standards
+## Repository-Specific Context
 
-### Python Code Style
-- Type hints required for all functions
-- Google/NumPy style docstrings
-- snake_case for functions/variables
-- PascalCase for classes
-- Black formatting (automatically applied via pre-commit)
+### Key Components
 
-### Testing Requirements
-- Write tests for all new functionality
-- Maintain code coverage above configured threshold
-- Use appropriate test markers: `@pytest.mark.unit`, `@pytest.mark.integration`, `@pytest.mark.slow`
+- **`init.py`**: Project initialization script - handles virtual environment and dependency setup
+- **`scripts/Run-Python.psm1`**: Cross-platform Python execution module
+- **`scripts/Get-ProviderModels.psm1`**: AI provider model fetching utility
+- **`configs/ai-tools.yaml`**: Central AI tool configuration
+- **`.github/copilot-instructions.md`**: GitHub Copilot specific instructions
 
-### Environment Variables
-Create a `.env` file with:
-```
-CLAUDE_API_KEY=your_claude_key
-GEMINI_API_KEY=your_gemini_key
-```
+### AI Integration Points
 
-## Common Tasks
+- **Environment Variables**: API keys stored in `.env` (use `.env.example` as template)
+- **Model Configuration**: Provider-specific settings in `configs/`
+- **Custom Instructions**: Tool-specific guidance in `.github/instructions/`
+- **Command Patterns**: Claude-specific commands in `.claude/`
 
-### Adding a New Python Module
-1. Create module in `src/` directory
-2. Add type hints to all functions
-3. Write corresponding tests in `tests/`
-4. Run `black .` and `mypy src/` before committing
+### Maintenance Considerations
 
-### Updating Dependencies
-```bash
-# Add a new dependency
-poetry add package_name
+- **Dependency Updates**: Use Poetry for Python dependencies
+- **Documentation Sync**: Keep multiple docs consistent (README, CLAUDE.md, AGENTS.md)
+- **Cross-Platform Testing**: PowerShell scripts must work on all platforms
+- **Configuration Validation**: YAML files should have consistent structure
 
-# Add a dev dependency
-poetry add --dev package_name
+## Common Tasks for Claude
 
-# Update all dependencies
-poetry update
+### Adding New AI Tool Support
 
-# Regenerate requirements.txt
-poetry export -f requirements.txt --output requirements.txt
-```
+1. Update `configs/ai-tools.yaml` with new tool configuration
+2. Add environment variable documentation to `.env.example`
+3. Create tool-specific instruction file in `.github/instructions/`
+4. Update main documentation to mention the new tool
+5. Test configuration loading and validation
 
-### Running PowerShell Scripts
-The project includes PowerShell modules for cross-platform automation:
-- `Run-Python.psm1` - Manages Python execution with virtual environment handling
-- `Get-ProviderModels.psm1` - Fetches AI provider model information
+### Implementing New Features
 
-## AI Assistant Guidelines
+1. Create failing test in appropriate `tests/` subdirectory
+2. Implement minimal code in `src/` to pass tests
+3. Add comprehensive type hints and docstrings
+4. Update relevant configuration files
+5. Document the feature in appropriate README sections
 
-When working with this codebase:
-1. Always check existing patterns before implementing new features
-2. Maintain consistency with the established code style
-3. Use the configured tools (Poetry, Black, MyPy) for dependency and code management
-4. Follow the testing patterns established in the `tests/` directory
-5. Refer to `AGENTS.md` for detailed AI coding standards
+### Debugging and Troubleshooting
 
-## Notes
+1. Check virtual environment activation (`.venv/`)
+2. Verify all dependencies installed (`poetry install`)
+3. Run tests to identify specific failures (`pytest -v`)
+4. Check configuration file syntax (YAML validation)
+5. Verify environment variables are set correctly
 
-- The project supports Windows, macOS, and Linux
-- PowerShell 7.0+ is required (auto-installed on Unix systems if needed)
-- Pre-commit hooks are automatically configured during setup
-- The `data/` directory is git-ignored for local data storage
-- HTML coverage reports are generated in `htmlcov/` after running tests with coverage
+## Integration with Other AI Tools
+
+### GitHub Copilot Compatibility
+
+- Follow patterns established in `.github/copilot-instructions.md`
+- Use consistent naming and structure for better AI understanding
+- Maintain clear, descriptive function and variable names
+- Structure code in predictable, logical patterns
+
+### Multi-AI Workflows
+
+- Assume other AI tools may also work with this codebase
+- Keep code self-documenting and well-structured
+- Use configuration files rather than hardcoded values
+- Maintain clear separation of concerns
+
+---
+
+**Remember**: This is a boilerplate project. Focus on creating patterns and structures that will be useful when this template is customized for specific use cases.
