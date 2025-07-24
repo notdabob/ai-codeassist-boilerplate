@@ -15,7 +15,16 @@
       "Bash(rg:*)",
       "Bash(pip-audit:*)",
       "Bash(pip install:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(cat:*)",
+      "Bash(if [ -d \".venv\" ])",
+      "Bash(then .venv/bin/python -m pytest --cov=src --cov=init --cov-report=term-missing -v)",
+      "Bash(else echo \"No virtual environment found\")",
+      "Bash(fi)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }
